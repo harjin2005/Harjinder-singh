@@ -1,1 +1,306 @@
-"hello world"
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>RajXharsh - Free Movies Download</title>
+      <link rel="stylesheet" href="styles.css">
+
+      <style>
+          /* Global Styles */
+          :root {
+              --primary-color: #121212;
+              --secondary-color: #1f1f1f;
+              --accent-color: #ffd700;
+              --text-color: #ffffff;
+              --text-secondary: #b3b3b3;
+          }
+
+          * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+          }
+
+          body {
+              font-family: 'Arial', sans-serif;
+              background-color: var(--primary-color);
+              color: var(--text-color);
+              line-height: 1.6;
+              font-size: 16px;
+          }
+
+          /* Header styles */
+          .hero {
+              position: relative;
+              height: 20vh;
+              background-color: var(--secondary-color);
+              border-bottom: 2px solid var(--accent-color);
+          }
+
+          .hero-content {
+              position: relative;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 1rem;
+          }
+
+          .logo {
+              max-width: 200px;
+              z-index: 1;
+          }
+
+          /* Navigation */
+          .main-nav {
+              background-color: var(--secondary-color);
+              padding: 1rem;
+              position: sticky;
+              top: 0;
+              z-index: 100;
+              border-bottom: 1px solid var(--accent-color);
+          }
+
+          .main-nav ul {
+              display: flex;
+              flex-wrap: wrap;
+              list-style: none;
+              gap: 1rem;
+              margin-bottom: 1rem;
+          }
+
+          .main-nav a {
+              color: var(--text-color);
+              text-decoration: none;
+              font-weight: 500;
+              transition: color 0.3s ease;
+              padding: 0.5rem;
+              text-align: center;
+          }
+
+          .main-nav a:hover {
+              color: var(--accent-color);
+          }
+
+          .search-container {
+              display: flex;
+              gap: 0.5rem;
+          }
+
+          .search-container input {
+              padding: 0.8rem;
+              width: 100%;
+              border: 1px solid var(--accent-color);
+              border-radius: 4px;
+              background-color: var(--primary-color);
+              color: var(--text-color);
+          }
+
+          .search-container button {
+              padding: 0.8rem 1.5rem;
+              background-color: var(--accent-color);
+              border: none;
+              border-radius: 4px;
+              color: var(--primary-color);
+              cursor: pointer;
+              font-weight: bold;
+          }
+
+          /* Movie Grid */
+          .movie-grid {
+              padding: 2rem;
+          }
+
+          .movie-grid h2 {
+              margin-bottom: 1.5rem;
+              font-size: 1.8rem;
+              color: var(--accent-color);
+              border-left: 4px solid var(--accent-color);
+              padding-left: 1rem;
+          }
+
+          .movie-container {
+              display: grid;
+              grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+              gap: 2rem;
+          }
+
+          .movie-card {
+              background-color: var(--secondary-color);
+              border-radius: 8px;
+              overflow: hidden;
+              transition: transform 0.3s ease;
+              border: 1px solid #333;
+          }
+
+          .movie-card:hover {
+              transform: translateY(-5px);
+              box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);
+          }
+
+          .movie-card img {
+              width: 100%;
+              height: 300px;
+              object-fit: cover;
+          }
+
+          .movie-card h3 {
+              padding: 1rem;
+              font-size: 1.1rem;
+              color: var(--accent-color);
+          }
+
+          .movie-card p {
+              padding: 0 1rem 1rem;
+              font-size: 0.9rem;
+              color: var(--text-secondary);
+          }
+
+          .download-btn {
+              display: block;
+              margin: 1rem;
+              padding: 0.8rem;
+              background-color: var(--accent-color);
+              color: var(--primary-color);
+              text-align: center;
+              text-decoration: none;
+              border-radius: 4px;
+              font-weight: bold;
+          }
+
+          /* Footer */
+          .site-footer {
+              padding: 2rem 1rem;
+              text-align: center;
+              background-color: var(--secondary-color);
+              border-top: 2px solid var(--accent-color);
+          }
+
+          .social-links {
+              margin-bottom: 1.5rem;
+          }
+
+          .social-links a {
+              margin: 0 0.5rem;
+              font-size: 1.5rem;
+              color: var(--accent-color);
+          }
+
+          .footer-links {
+              display: flex;
+              justify-content: center;
+              flex-wrap: wrap;
+              gap: 2rem;
+              margin-bottom: 1.5rem;
+          }
+
+          .footer-links a {
+              color: var(--text-secondary);
+              text-decoration: none;
+          }
+
+          .footer-links a:hover {
+              color: var(--accent-color);
+          }
+
+          /* Quality badges */
+          .quality-badge {
+              position: absolute;
+              top: 10px;
+              right: 10px;
+              background-color: var(--accent-color);
+              color: var(--primary-color);
+              padding: 0.3rem 0.6rem;
+              border-radius: 3px;
+              font-weight: bold;
+              font-size: 0.8rem;
+          }
+
+          @media (max-width: 768px) {
+              .movie-container {
+                  grid-template-columns: repeat(2, 1fr);
+              }
+          }
+
+          @media (max-width: 480px) {
+              .movie-container {
+                  grid-template-columns: 1fr;
+              }
+          }
+      </style>
+
+  </head>
+  <body>
+      <header class="hero">
+          <div class="hero-content">
+              <img src="images/rajxharsh-logo.png" alt="RajXharsh Logo" class="logo">
+          </div>
+      </header>
+
+      <nav class="main-nav">
+          <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#bollywood">Bollywood</a></li>
+              <li><a href="#hollywood">Hollywood</a></li>
+              <li><a href="#webseries">Web Series</a></li>
+              <li><a href="#dubbed">Dubbed Movies</a></li>
+              <li><a href="#request">Request</a></li>
+          </ul>
+          <div class="search-container">
+              <input type="text" placeholder="Search movies to download...">
+              <button type="submit"><i class="fa fa-search"></i> Search</button>
+          </div>
+      </nav>
+
+      <main class="movie-grid">
+          <h2>Latest Movies</h2>
+          <div class="movie-container">
+              <div class="movie-card">
+                  <div class="quality-badge">1080p</div>
+                  <img src="images/movie1.jpg" alt="Movie 1" loading="lazy">
+                  <h3>Latest Movie 1</h3>
+                  <p>Quality: 1080p | Size: 2.3GB</p>
+                  <a href="#download" class="download-btn">Download Now</a>
+              </div>
+              <div class="movie-card">
+                  <div class="quality-badge">720p</div>
+                  <img src="images/movie2.jpg" alt="Movie 2" loading="lazy">
+                  <h3>Latest Movie 2</h3>
+                  <p>Quality: 720p | Size: 1.1GB</p>
+                  <a href="#download" class="download-btn">Download Now</a>
+              </div>
+              <div class="movie-card">
+                  <div class="quality-badge">4K</div>
+                  <img src="images/movie3.jpg" alt="Movie 3" loading="lazy">
+                  <h3>Latest Movie 3</h3>
+                  <p>Quality: 4K | Size: 4.5GB</p>
+                  <a href="#download" class="download-btn">Download Now</a>
+              </div>
+              <div class="movie-card">
+                  <div class="quality-badge">1080p</div>
+                  <img src="images/movie4.jpg" alt="Movie 4" loading="lazy">
+                  <h3>Latest Movie 4</h3>
+                  <p>Quality: 1080p | Size: 2.1GB</p>
+                  <a href="#download" class="download-btn">Download Now</a>
+              </div>
+          </div>
+      </main>
+
+      <footer class="site-footer">
+          <div class="social-links">
+              <a href="#"><i class="fab fa-telegram"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+          <div class="footer-links">
+              <a href="#dmca">DMCA</a>
+              <a href="#disclaimer">Disclaimer</a>
+              <a href="#contact">Contact</a>
+          </div>
+          <p>© 2024 RajXharsh. All rights reserved.</p>
+      </footer>
+
+      <script src="https://kit.fontawesome.com/your-kit-code.js" defer></script>
+  </body>
+  </html>
